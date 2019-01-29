@@ -93,3 +93,17 @@ inputs:
       is_expand: true
       is_required: true
       is_sensitive: true
+  - cipher: "$VPN_CIPHER"
+    opts:
+      title: "Cipher"
+      summary: "Cipher"
+      is_expand: true
+      is_required: true
+      is_sensitive: true
+  - auth: "$VPN_AUTH"
+    opts:
+      title: "Auth"
+      summary: "Message authentication"
+      is_expand: true
+      is_required: true
+      is_sensitive: true
