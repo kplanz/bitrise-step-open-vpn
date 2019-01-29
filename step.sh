@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -eux
 
 case "$OSTYPE" in
   linux*)
@@ -8,12 +8,12 @@ case "$OSTYPE" in
     echo ${ca_crt} | base64 -d > /etc/openvpn/ca.crt
     echo ${client_crt} | base64 -d > /etc/openvpn/client.crt
     echo ${client_key} | base64 -d > /etc/openvpn/client.key
+    echo ${tls_key} | base64 -d > /etc/openvpn/tls.key
 
     cat <<EOF > /etc/openvpn/client.conf
 client
 dev tun
-proto ${proto}
-remote ${host} ${port}
+remote ${host} ${port} ${proto}  
 resolv-retry infinite
 nobind
 persist-key
@@ -23,6 +23,8 @@ verb 3
 ca ca.crt
 cert client.crt
 key client.key
+tls-auth tls.key 1
+cipher AES-256-CBC
 EOF
 
     service openvpn start client > /dev/null 2>&1

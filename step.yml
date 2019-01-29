@@ -12,9 +12,9 @@ description: |
   You can easily retrieve the contents of Base64 with the following command.
 
   `$ base64 <certificate or private key file path>`
-website: https://github.com/justice3120/bitrise-step-open-vpn
-source_code_url: https://github.com/justice3120/bitrise-step-open-vpn
-support_url: https://github.com/justice3120/bitrise-step-open-vpn/issues
+website: https://github.com/jfassad/bitrise-step-open-vpn
+source_code_url: https://github.com/jfassad/bitrise-step-open-vpn
+support_url: https://github.com/jfassad/bitrise-step-open-vpn/issues
 host_os_tags:
   - osx-10.10
   - ubuntu-16.04
@@ -83,6 +83,13 @@ inputs:
     opts:
       title: "Base64 encoded Client Private Key"
       summary: "Base64 encoded Client Private Key"
+      is_expand: true
+      is_required: true
+      is_sensitive: true
+  - tls_key: "$VPN_TLS_KEY_BASE64"
+    opts:
+      title: "Base64 encoded TLS Key"
+      summary: "Base64 encoded TLS Key"
       is_expand: true
       is_required: true
       is_sensitive: true
